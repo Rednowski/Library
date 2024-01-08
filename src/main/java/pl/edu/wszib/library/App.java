@@ -1,13 +1,24 @@
 package pl.edu.wszib.library;
 
+import pl.edu.wszib.library.authorization.Authenticator;
 import pl.edu.wszib.library.db.BookRepository;
 import pl.edu.wszib.library.gui.GUI;
+import pl.edu.wszib.library.user.User;
 
 public class App {
     public static void main(String[] args) {
         BookRepository bookRepository = new BookRepository();
+        Authenticator authenticator = new Authenticator();
         GUI gui = new GUI();
-        boolean run = true;
+        boolean run = false;
+        int counter = 0;
+
+        while(!run && counter < 3){
+            User user = gui.readAuthData();
+            run = authenticator.authenticate(user.getLogin(), user.getPassword());
+            counter++;
+        }
+
         while(run){
             switch(gui.showMenuAndRead()){
                 case "1":

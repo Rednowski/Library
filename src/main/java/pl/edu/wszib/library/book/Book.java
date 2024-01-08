@@ -16,6 +16,10 @@ public class Book {
         this.rent = false;
     }
 
+    public Book(){
+
+    }
+
     public String getTitle() {
         return title;
     }

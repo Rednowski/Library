@@ -1,6 +1,7 @@
 package pl.edu.wszib.library.gui;
 
 import pl.edu.wszib.library.book.Book;
+import pl.edu.wszib.library.user.User;
 
 import java.util.Scanner;
 
@@ -33,5 +34,12 @@ public class GUI {
         if(result){
             System.out.println("success");
         } else System.out.println("fail");
+    }
+
+    public User readAuthData(){
+        System.out.println("Login: ");
+        String login = this.scanner.nextLine();
+        System.out.println("Password");
+        return new User(login, this.scanner.nextLine());
     }
 }
