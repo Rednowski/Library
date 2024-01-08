@@ -7,6 +7,7 @@ public class Book {
     private LocalDate startDate;
     private LocalDate endDate;
     private boolean rent;
+    private String name;
 
     public Book(String title, String author, long isbn) {
         this.title = title;
@@ -62,4 +63,13 @@ public class Book {
     public void setRent(boolean rent) {
         this.rent = rent;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }

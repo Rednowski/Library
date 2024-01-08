@@ -3,8 +3,10 @@ package pl.edu.wszib.library.db;
 import pl.edu.wszib.library.book.Book;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class BookRepository {
+    Scanner scanner = new Scanner(System.in);
     private final Book[] books = new Book[5];
 
     public BookRepository(){
@@ -22,6 +24,9 @@ public class BookRepository {
     public boolean rent(long isbn){
         for(Book book : this.books){
             if(book.getIsbn() == isbn && !book.isRent()){
+                System.out.println("Enter your name and surname");
+                String name = scanner.nextLine();
+                book.setName(name);
                 book.setRent(true);
                 book.setStartDate(LocalDate.now());
                 book.setEndDate(LocalDate.now().plusDays(14));

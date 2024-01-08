@@ -1,26 +1,17 @@
 package pl.edu.wszib.library;
 
-
-import java.util.Scanner;
+import pl.edu.wszib.library.db.BookRepository;
+import pl.edu.wszib.library.gui.GUI;
 
 public class App {
     public static void main(String[] args) {
+        BookRepository bookRepository = new BookRepository();
+        GUI gui = new GUI();
         boolean run = true;
         while(run){
-            System.out.println("1. List all books");
-            System.out.println("2. List rented books");
-            System.out.println("3. List expired rentals");
-            System.out.println("4. Search book");
-            System.out.println("5. Rent book");
-            System.out.println("6. Add book");
-            System.out.println("7. Exit");
-
-            Scanner scanner = new Scanner(System.in);
-            String choose = scanner.nextLine();
-
-            switch(choose){
+            switch(gui.showMenuAndRead()){
                 case "1":
-                    System.out.println("listing all books");
+                    gui.listBooks(bookRepository.getBooks());
                     break;
                 case "2":
                     System.out.println("listing all rented books");
@@ -32,7 +23,7 @@ public class App {
                     System.out.println("Searching for a book");
                     break;
                 case "5":
-                    System.out.println("Renting a book");
+                    gui.showResult(bookRepository.rent(gui.readISBN()));
                     break;
                 case "6":
                     System.out.println("Adding a book");
