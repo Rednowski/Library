@@ -2,7 +2,6 @@ package pl.edu.wszib.library.db;
 
 import pl.edu.wszib.library.book.Book;
 
-import java.lang.foreign.StructLayout;
 import java.time.LocalDate;
 
 public class BookRepository {
