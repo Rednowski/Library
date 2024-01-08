@@ -3,12 +3,12 @@ import java.time.LocalDate;
 public class Book {
     private String title;
     private String author;
-    private String isbn;
+    private long isbn;
     private LocalDate startDate;
     private LocalDate endDate;
     private boolean rent;
 
-    public Book(String title, String author, String isbn) {
+    public Book(String title, String author, long isbn) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;
@@ -31,11 +31,11 @@ public class Book {
         this.author = author;
     }
 
-    public String getIsbn() {
+    public long getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
+    public void setIsbn(long isbn) {
         this.isbn = isbn;
     }
 
