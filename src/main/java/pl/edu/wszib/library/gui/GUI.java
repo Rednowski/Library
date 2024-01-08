@@ -20,8 +20,7 @@ public class GUI {
 
     public void listBooks(Book[] books){
         for(Book book : books){
-            System.out.println("\"" + book.getTitle() + "\", " +
-                    book.getAuthor() + ", " + "ISBN: " + book.getIsbn() + " Rented: " + book.isRent());
+            System.out.println(book);
         }
     }
 

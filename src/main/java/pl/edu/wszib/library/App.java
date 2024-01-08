@@ -32,7 +32,7 @@ public class App {
                     run = false;
                     break;
                 default:
-                    System.out.println("Eror in choosing");
+                    System.out.println("Error in choosing");
                     break;
             }
         }

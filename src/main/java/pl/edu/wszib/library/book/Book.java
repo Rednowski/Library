@@ -7,7 +7,7 @@ public class Book {
     private LocalDate startDate;
     private LocalDate endDate;
     private boolean rent;
-    private String name;
+    private String fullName;
 
     public Book(String title, String author, long isbn) {
         this.title = title;
@@ -64,12 +64,32 @@ public class Book {
         this.rent = rent;
     }
 
-    public String getName() {
-        return name;
+    public String getfullName() {
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setfullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    @Override
+    public String toString(){
+        return new StringBuilder().append("\"")
+        .append(this.getTitle())
+        .append("\", ")
+        .append(this.getAuthor())
+        .append(", ")
+        .append("ISBN: ")
+        .append(this.getIsbn())
+        .append(" ")
+        .append(this.getStartDate() == null ? "" : this.getStartDate())
+        .append(" - ")
+        .append(this.getEndDate() == null ? "" : this.getEndDate())
+        .append(" ")
+        .append(this.isRent() ? " is rented " : " is not rented ")
+                .append(this.getfullName() == null ? "" : "by ")
+                .append(this.getfullName() == null ? "" : this.getfullName())
+        .toString();
     }
 
 }

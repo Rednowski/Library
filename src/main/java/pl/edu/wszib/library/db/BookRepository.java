@@ -24,9 +24,9 @@ public class BookRepository {
     public boolean rent(long isbn){
         for(Book book : this.books){
             if(book.getIsbn() == isbn && !book.isRent()){
-                System.out.println("Enter your name and surname");
-                String name = scanner.nextLine();
-                book.setName(name);
+                System.out.println("Enter your fullname");
+                String fullName = scanner.nextLine();
+                book.setfullName(fullName);
                 book.setRent(true);
                 book.setStartDate(LocalDate.now());
                 book.setEndDate(LocalDate.now().plusDays(14));
