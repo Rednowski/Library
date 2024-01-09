@@ -34,6 +34,7 @@ public class App {
                     break;
                 case "4":
                     System.out.println("Searching for a book");
+                    gui.searchBooks(bookRepository.getBooks());
                     break;
                 case "5":
                     gui.showResult(bookRepository.rent(gui.readISBN()));
