@@ -15,6 +15,16 @@ public class Book {
         this.isbn = isbn;
         this.rent = false;
     }
+    public Book(String title, String author, long isbn, LocalDate startDate,
+                LocalDate endDate, boolean rent, String fullName) {
+        this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.rent = rent;
+        this.fullName = fullName;
+    }
 
     public Book(){
 

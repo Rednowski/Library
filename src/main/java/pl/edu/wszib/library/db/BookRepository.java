@@ -16,6 +16,12 @@ public class BookRepository {
         this.books.add(new Book("Pan Tadeusz","Adam Mickiewicz", 1234567890122L));
         this.books.add(new Book("Dziady","Adam Mickiewicz", 1234567890123L));
         this.books.add(new Book("Harry Potter","J.K. Rowling", 1234567890124L));
+        this.books.add(new Book("Test expired book","test", 12345678L,
+                LocalDate.now().minusDays(28),
+                LocalDate.now().minusDays(14),true,"Test test"));
+        this.books.add(new Book("Test rented book","test123", 1234L,
+                LocalDate.now(),
+                LocalDate.now().plusDays(14),true,"Jakub Test"));
     }
 
     public ArrayList<Book> getBooks(){
@@ -37,7 +43,7 @@ public class BookRepository {
         return false;
     }
 
-    public void addBook(){
+    public boolean addBook(){
         System.out.println("Enter title: ");
         String title = scanner.nextLine();
         System.out.println("Enter author: ");
@@ -47,10 +53,6 @@ public class BookRepository {
         scanner.nextLine();
         Book newBook = new Book(title,author,isbn);
         books.add(newBook);
-        if(books.contains(newBook)){
-            System.out.println("success");
-        } else {
-            System.out.println("fail");
-        }
+        return books.contains(newBook);
     }
 }

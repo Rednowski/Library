@@ -3,6 +3,7 @@ package pl.edu.wszib.library.gui;
 import pl.edu.wszib.library.book.Book;
 import pl.edu.wszib.library.user.User;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -24,6 +25,31 @@ public class GUI {
         for(Book book : books){
             System.out.println(book);
         }
+    }
+
+    public void listRentedBooks(ArrayList<Book> books){
+        int counter = 0;
+        for(Book book : books){
+            if(book.isRent()){
+                System.out.println(book);
+                counter++;
+            }
+        }
+        if(counter == 0) System.out.println("There are no rented books");
+    }
+
+    public void listExpiredBooks(ArrayList<Book> books){
+        int counter = 0;
+        for(Book book : books){
+            if(book.getEndDate() != null && book.getStartDate() != null){
+                if(book.getEndDate().isBefore(LocalDate.now()) && book.isRent()){
+                    System.out.println(book);
+                    counter++;
+                }
+            }
+
+        }
+        if(counter == 0) System.out.println("There are no expired books");
     }
 
     public long readISBN(){

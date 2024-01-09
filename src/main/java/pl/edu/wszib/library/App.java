@@ -26,9 +26,11 @@ public class App {
                     break;
                 case "2":
                     System.out.println("listing all rented books");
+                    gui.listRentedBooks(bookRepository.getBooks());
                     break;
                 case "3":
                     System.out.println("listing all expired rentals of books");
+                    gui.listExpiredBooks(bookRepository.getBooks());
                     break;
                 case "4":
                     System.out.println("Searching for a book");
@@ -38,7 +40,7 @@ public class App {
                     break;
                 case "6":
                     System.out.println("Adding a book");
-                    bookRepository.addBook();
+                    gui.showResult(bookRepository.addBook());
                     break;
                 case "7":
                     run = false;
