@@ -38,6 +38,7 @@ public class App {
                     break;
                 case "6":
                     System.out.println("Adding a book");
+                    bookRepository.addBook();
                     break;
                 case "7":
                     run = false;

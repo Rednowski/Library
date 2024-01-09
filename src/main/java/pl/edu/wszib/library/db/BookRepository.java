@@ -36,4 +36,21 @@ public class BookRepository {
         }
         return false;
     }
+
+    public void addBook(){
+        System.out.println("Enter title: ");
+        String title = scanner.nextLine();
+        System.out.println("Enter author: ");
+        String author = scanner.nextLine();
+        System.out.println("Enter ISBN: ");
+        long isbn = scanner.nextLong();
+        scanner.nextLine();
+        Book newBook = new Book(title,author,isbn);
+        books.add(newBook);
+        if(books.contains(newBook)){
+            System.out.println("success");
+        } else {
+            System.out.println("fail");
+        }
+    }
 }

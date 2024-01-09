@@ -3,6 +3,7 @@ package pl.edu.wszib.library.gui;
 import pl.edu.wszib.library.book.Book;
 import pl.edu.wszib.library.user.User;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GUI {
@@ -19,7 +20,7 @@ public class GUI {
         return scanner.nextLine();
     }
 
-    public void listBooks(Book[] books){
+    public void listBooks(ArrayList<Book> books){
         for(Book book : books){
             System.out.println(book);
         }
@@ -27,7 +28,9 @@ public class GUI {
 
     public long readISBN(){
         System.out.println("Enter ISBN:");
-        return scanner.nextLong();
+        long isbn = scanner.nextLong();
+        scanner.nextLine();
+        return isbn;
     }
 
     public void showResult(boolean result){
@@ -42,4 +45,6 @@ public class GUI {
         System.out.println("Password");
         return new User(login, this.scanner.nextLine());
     }
+
+
 }
