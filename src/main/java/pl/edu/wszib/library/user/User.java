@@ -1,9 +1,17 @@
 package pl.edu.wszib.library.user;
 
 public class User {
+    private int id;
     private String login;
     private String password;
     private String role;
+
+    public User(int id, String login, String password, String role) {
+        this.login = login;
+        this.password = password;
+        this.role = role;
+        this.id = id;
+    }
 
     public User(String login, String password, String role) {
         this.login = login;
@@ -18,6 +26,14 @@ public class User {
 
     public String getLogin() {
         return login;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setLogin(String login) {

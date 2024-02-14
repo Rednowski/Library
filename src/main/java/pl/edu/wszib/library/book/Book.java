@@ -1,6 +1,7 @@
 package pl.edu.wszib.library.book;
 import java.time.LocalDate;
 public class Book {
+    private int id;
     private String title;
     private String author;
     private long isbn;
@@ -15,6 +16,18 @@ public class Book {
         this.isbn = isbn;
         this.rent = false;
     }
+
+    public Book(int id, String title, String author, long isbn, LocalDate startDate, LocalDate endDate, boolean rent, String fullName) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.rent = rent;
+        this.fullName = fullName;
+    }
+
     public Book(String title, String author, long isbn, LocalDate startDate,
                 LocalDate endDate, boolean rent, String fullName) {
         this.title = title;
@@ -24,6 +37,14 @@ public class Book {
         this.endDate = endDate;
         this.rent = rent;
         this.fullName = fullName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Book(){

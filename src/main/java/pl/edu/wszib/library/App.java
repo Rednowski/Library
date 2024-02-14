@@ -4,9 +4,15 @@ import pl.edu.wszib.library.authorization.Authenticator;
 import pl.edu.wszib.library.db.BookRepository;
 import pl.edu.wszib.library.gui.GUI;
 import pl.edu.wszib.library.user.User;
+import pl.edu.wszib.library.utils.DButil;
+
+import java.sql.Connection;
 
 public class App {
+
+    public static Connection connection;
     public static void main(String[] args) {
+        DButil.connect();
         BookRepository bookRepository = new BookRepository();
         Authenticator authenticator = new Authenticator();
         GUI gui = new GUI();
@@ -44,6 +50,7 @@ public class App {
                     gui.showResult(bookRepository.addBook());
                     break;
                 case "7":
+                    DButil.disconnect();
                     run = false;
                     break;
                 default:

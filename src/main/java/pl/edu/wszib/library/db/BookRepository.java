@@ -1,7 +1,11 @@
 package pl.edu.wszib.library.db;
 
+import pl.edu.wszib.library.App;
 import pl.edu.wszib.library.book.Book;
 
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -55,4 +59,32 @@ public class BookRepository {
         books.add(newBook);
         return books.contains(newBook);
     }
+
+    public void saveBook(Book book){
+        try {
+            String sql = "INSERT INTO tbook (title, author, isbn, startDate, endDate, rent, fullname) VALUES (?,?,?,?,?,?,?);";
+            PreparedStatement preparedStatement = App.connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, book.getTitle());
+            preparedStatement.setString(2, book.getAuthor());
+            preparedStatement.setLong(3, book.getIsbn());
+            if (book.getStartDate() != null) {
+                preparedStatement.setDate(4, java.sql.Date.valueOf(book.getStartDate()));
+            } else {
+                preparedStatement.setNull(4, java.sql.Types.DATE);
+            }
+            if (book.getEndDate() != null) {
+                preparedStatement.setDate(5, java.sql.Date.valueOf(book.getEndDate()));
+            } else {
+                preparedStatement.setNull(5, java.sql.Types.DATE);
+            }
+            preparedStatement.setBoolean(6, book.isRent());
+            preparedStatement.setString(7, book.getfullName());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
