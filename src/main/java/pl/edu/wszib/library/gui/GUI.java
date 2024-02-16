@@ -16,7 +16,8 @@ public class GUI {
         System.out.println("4. Search book");
         System.out.println("5. Rent book");
         System.out.println("6. Add book");
-        System.out.println("7. Exit");
+        System.out.println("7. Return book");
+        System.out.println("8. Exit");
 
         return scanner.nextLine();
     }

@@ -43,6 +43,7 @@ public class App {
                     gui.searchBooks(bookRepository.getBooks());
                     break;
                 case "5":
+                    System.out.println("Renting a book");
                     gui.showResult(bookRepository.rent(gui.readISBN()));
                     break;
                 case "6":
@@ -50,6 +51,10 @@ public class App {
                     gui.showResult(bookRepository.addBook());
                     break;
                 case "7":
+                    System.out.println("Returning a book");
+                    gui.showResult(bookRepository.returnBook(gui.readISBN()));
+                    break;
+                case "8":
                     DButil.disconnect();
                     run = false;
                     break;
