@@ -3,33 +3,44 @@ package pl.edu.wszib.library.db;
 import pl.edu.wszib.library.App;
 import pl.edu.wszib.library.book.Book;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 public class BookRepository {
     Scanner scanner = new Scanner(System.in);
     private final ArrayList<Book> books = new ArrayList<>();
 
     public BookRepository(){
-        this.books.add(new Book("Dzieci z Bullerbyn","Astrid Lindgren", 1234567890120L));
-        this.books.add(new Book("Chłopi","Władysław Reymont", 1234567890121L));
-        this.books.add(new Book("Pan Tadeusz","Adam Mickiewicz", 1234567890122L));
-        this.books.add(new Book("Dziady","Adam Mickiewicz", 1234567890123L));
-        this.books.add(new Book("Harry Potter","J.K. Rowling", 1234567890124L));
-        this.books.add(new Book("Test expired book","test", 12345678L,
-                LocalDate.now().minusDays(28),
-                LocalDate.now().minusDays(14),true,"Test test"));
-        this.books.add(new Book("Test rented book","test123", 1234L,
-                LocalDate.now(),
-                LocalDate.now().plusDays(14),true,"Jakub Test"));
     }
 
     public ArrayList<Book> getBooks(){
-        return books;
+        ArrayList<Book> result = new ArrayList<>();
+        try{
+            String sql = "SELECT * FROM tbook";
+            PreparedStatement preparedStatement = App.connection.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                Book book = new Book();
+                book.setId(rs.getInt("id"));
+                book.setTitle(rs.getString("title"));
+                book.setAuthor(rs.getString("author"));
+                book.setIsbn(rs.getLong("isbn"));
+                book.setStartDate(rs.getDate("startDate") != null ?
+                        rs.getDate("startDate").toLocalDate() : null);
+                book.setEndDate(rs.getDate("endDate") != null ?
+                        rs.getDate("endDate").toLocalDate() : null);
+                book.setRent(rs.getBoolean("rent"));
+                book.setfullName(rs.getString("fullname"));
+
+                result.add(book);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     public boolean rent(long isbn){
