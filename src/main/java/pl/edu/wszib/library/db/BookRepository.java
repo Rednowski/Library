@@ -109,9 +109,23 @@ public class BookRepository {
         System.out.println("Enter ISBN: ");
         long isbn = scanner.nextLong();
         scanner.nextLine();
-        Book newBook = new Book(title,author,isbn);
-        books.add(newBook);
-        return books.contains(newBook);
+        try {
+            String sql = "INSERT INTO tbook (title, author, isbn, startDate, endDate, rent, fullname) VALUES (?,?,?,?,?,?,?);";
+            PreparedStatement preparedStatement = App.connection.prepareStatement(sql);
+            preparedStatement.setString(1, title);
+            preparedStatement.setString(2, author);
+            preparedStatement.setLong(3, isbn);
+            preparedStatement.setNull(4, Types.DATE);
+            preparedStatement.setNull(5, Types.DATE);
+            preparedStatement.setBoolean(6, false);
+            preparedStatement.setNull(7, Types.VARCHAR);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 
     public void saveBook(Book book){
