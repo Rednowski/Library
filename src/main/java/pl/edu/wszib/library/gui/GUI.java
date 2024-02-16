@@ -83,7 +83,7 @@ public class GUI {
     public User readAuthData(){
         System.out.println("Login: ");
         String login = this.scanner.nextLine();
-        System.out.println("Password");
+        System.out.println("Password: ");
         return new User(login, this.scanner.nextLine());
     }
 
