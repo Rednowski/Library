@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class BookRepository {
     Scanner scanner = new Scanner(System.in);
-    private final ArrayList<Book> books = new ArrayList<>();
+
 
     public BookRepository(){
     }
