@@ -42,6 +42,31 @@ public class BookRepository {
         return result;
     }
 
+    public boolean rentBookLocal(long isbn){
+        for(Book book : this.books){
+            if(book.getIsbn() == isbn && !book.isRent()){
+                book.setRent(true);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean addBookLocal(String title, String author, long isbn){
+        Book newBook = new Book(title, author, isbn);
+        return true;
+    }
+
+    public boolean returnBookLocal(long isbn){
+        for(Book book : this.books){
+            if(book.getIsbn() == isbn && book.isRent()){
+                book.setRent(false);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean rent(long isbn){
         try{
             String sql = "SELECT * FROM tbook WHERE isbn = ?";
