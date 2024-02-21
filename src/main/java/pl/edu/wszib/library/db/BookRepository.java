@@ -11,8 +11,10 @@ public class BookRepository {
     Scanner scanner = new Scanner(System.in);
     private final ArrayList<Book> books = new ArrayList<>();
     public BookRepository(){
-        this.books.add(new Book("Dzieci z Bullerbyn",
-                "Astrid Lindgren", 1234567890120L));
+        this.books.add(new Book("Test rented book","test123", 1234L,
+                LocalDate.now(),
+                LocalDate.now().plusDays(14),true,"Jakub Test"));
+        this.books.add(new Book("Dzieci z Bullerbyn","Astrid Lindgren", 12345L));
     }
 
     public ArrayList<Book> getBooks(){
@@ -54,13 +56,16 @@ public class BookRepository {
 
     public boolean addBookLocal(String title, String author, long isbn){
         Book newBook = new Book(title, author, isbn);
-        return true;
+        return books.contains(newBook);
     }
 
     public boolean returnBookLocal(long isbn){
         for(Book book : this.books){
             if(book.getIsbn() == isbn && book.isRent()){
                 book.setRent(false);
+                book.setfullName(null);
+                book.setStartDate(null);
+                book.setEndDate(null);
                 return true;
             }
         }
