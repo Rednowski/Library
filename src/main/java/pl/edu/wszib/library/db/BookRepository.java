@@ -6,6 +6,7 @@ import pl.edu.wszib.library.book.Book;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 public class BookRepository {
     Scanner scanner = new Scanner(System.in);
@@ -17,7 +18,15 @@ public class BookRepository {
         this.books.add(new Book("Dzieci z Bullerbyn","Astrid Lindgren", 12345L));
     }
 
-    public ArrayList<Book> getBooks(){
+    public BookRepository(List<Book> books) {
+        this.books.addAll(books);
+    }
+
+    public ArrayList<Book> getBooks() {
+        return books;
+    }
+
+    public ArrayList<Book> getBooksFromDB(){
         ArrayList<Book> result = new ArrayList<>();
         try{
             String sql = "SELECT * FROM tbook";
