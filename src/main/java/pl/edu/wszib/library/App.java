@@ -28,19 +28,19 @@ public class App {
         while(run){
             switch(gui.showMenuAndRead()){
                 case "1":
-                    gui.listBooks(bookRepository.getBooks());
+                    gui.listBooks(bookRepository.getBooksFromDB());
                     break;
                 case "2":
                     System.out.println("listing all rented books");
-                    gui.listRentedBooks(bookRepository.getBooks());
+                    gui.listRentedBooks(bookRepository.getBooksFromDB());
                     break;
                 case "3":
                     System.out.println("listing all expired rentals of books");
-                    gui.listExpiredBooks(bookRepository.getBooks());
+                    gui.listExpiredBooks(bookRepository.getBooksFromDB());
                     break;
                 case "4":
                     System.out.println("Searching for a book");
-                    gui.searchBooks(bookRepository.getBooks());
+                    gui.searchBooks(bookRepository.getBooksFromDB());
                     break;
                 case "5":
                     System.out.println("Renting a book");
